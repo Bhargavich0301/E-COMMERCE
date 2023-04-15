@@ -1,135 +1,72 @@
-/* Global Styles */
-body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 0;
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset,
+label {
+  margin: 0;
+  padding: 0;
 }
 
-h1, h2, h3 {
-	margin: 0;
+/****** Style Star Rating Widget *****/
+
+.rating {
+  border: none;
+  float: left;
 }
 
-ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+.rating > input {
+  display: none;
 }
 
-/* Header Styles */
-header {
-	background-color: #333;
-	color: #fff;
-	padding: 20px;
+.rating > label:before {
+  margin: 5px;
+  font-size: 2.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
 }
 
-nav {
-	display: inline-block;
+/* Half Rating System */
+
+/*.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+*/
+
+/* 
+<input type="radio" id="star4half" name="rating" defaultValue={4.5} /><label className="half" htmlFor="star4half" title="Pretty good - 4.5 stars" />
+
+<input type="radio" id="star3half" name="rating" defaultValue={3.5} /><label className="half" htmlFor="star3half" title="Meh - 3.5 stars" />
+
+<input type="radio" id="star2half" name="rating" defaultValue={3.0} /><label className="half" htmlFor="star2half" title="Kinda bad - 2.5 stars" />
+
+<input type="radio" id="star1half" name="rating" defaultValue={2.5} /><label className="half" htmlFor="star1half" title="Meh - 1.5 stars" />
+
+<input type="radio" id="starhalf" name="rating" defaultValue={0.5} /><label className="half" htmlFor="starhalf" title="Sucks big time - 0.5 stars" />
+*/
+
+.rating > label {
+  color: #ddd;
+  float: right;
 }
 
-nav ul {
-	display: inline-block;
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating>input:checked~label,
+/* show gold star when clicked */
+.rating:not(:checked)>label:hover,
+/* hover current star */
+.rating:not(:checked)>label:hover~label {
+  color: #b7791f;
 }
 
-nav li {
-	display: inline-block;
-	margin-right: 20px;
-}
+/* hover previous stars in list */
 
-nav a {
-	color: #fff;
-	text-decoration: none;
-}
-
-nav a:hover {
-	text-decoration: underline;
-}
-
-/* Main Styles */
-main {
-	max-width: 960px;
-	margin: 0 auto;
-	padding: 20px;
-}
-
-#featured {
-	margin-bottom: 40px;
-}
-
-#featured h2 {
-	margin-bottom: 20px;
-}
-
-#featured ul {
-	display: flex;
-	flex-wrap: wrap;
-}
-
-#featured li {
-	flex-basis: calc(33.33% - 20px);
-	margin-right: 20px;
-	margin-bottom: 20px;
-	background-color: #f1f1f1;
-	padding: 20px;
-}
-
-#featured li:last-child {
-	margin-right: 0;
-}
-
-#featured img {
-	display: block;
-	margin: 0 auto;
-	max-width: 100%;
-	height: auto;
-}
-
-#featured h3 {
-	margin-top: 20px;
-}
-
-#featured p {
-	margin: 10px 0;
-}
-
-#categories {
-	margin-bottom: 40px;
-}
-
-#categories h2 {
-	margin-bottom: 20px;
-}
-
-#categories ul {
-	display: flex;
-	flex-wrap: wrap;
-}
-
-#categories li {
-	flex-basis: calc(33.33% - 20px);
-	margin-right: 20px;
-	margin-bottom: 20px;
-	background-color: #f1f1f1;
-	padding: 20px;
-}
-
-#categories li:last-child {
-	margin-right: 0;
-}
-
-#categories a {
-	display: block;
-	padding: 10px 0;
-	color: #333;
-}
-
-#categories a:hover {
-	background-color: #ccc;
-}
-
-/* Footer Styles */
-footer {
-	background-color: #333;
-	color: #fff;
-	padding: 20px;
-	text-align: center;
+.rating>input:checked+label:hover,
+/* hover current star when changing rating */
+.rating>input:checked~label:hover,
+.rating>label:hover~input:checked~label,
+/* lighten current selection */
+.rating>input:checked~label:hover~label {
+  color: #b7791f;
 }
